@@ -3,9 +3,13 @@
   "private": true,
   "type": "module",
   "version": "0.0.0",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "postinstall": "chmod +x node_modules/.bin/vite || true",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
