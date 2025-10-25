@@ -9,6 +9,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import emailjs from "emailjs-com";
 
 export const ContactSection = () => {
   const { toast } = useToast();
@@ -16,16 +17,32 @@ export const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
-      });
-      setIsSubmitting(false);
-    }, 1500);
+    emailjs
+      .sendForm(
+        'service_xkzp94u',
+        'template_r5f36w9',
+        e.target,
+        '78VmBe9N9pWL5ewIF'
+      )
+      .then(
+        (result) => {
+          toast({
+            title: "Message sent!",
+            description: "Thank you for your message. I'll get back to you soon.",
+          });
+          setIsSubmitting(false);
+          e.target.reset();
+        },
+        (error) => {
+          toast({
+            title: "Failed to send",
+            description: "Something went wrong. Please try again later.",
+          });
+          setIsSubmitting(false);
+        }
+      );
   };
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
