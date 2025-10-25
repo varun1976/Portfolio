@@ -64,7 +64,7 @@ export const AboutSection = () => {
                 <div className="text-left">
                   <h4 className="font-semibold text-lg">Machine Learning</h4>
                   <p className="text-muted-foreground">
-                    Building and training predictive models using diverse datasets, fine-tuning algorithms
+                    Building and training predictive models using diverse datasets, Hyper parameter tuning algorithms
                     to improve accuracy.
                   </p>
                 </div>
