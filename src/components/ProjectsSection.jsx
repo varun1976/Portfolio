@@ -22,13 +22,13 @@ const projects = [
   },
   {
     id: 3,
-    title: "E-commerce Platform",
+    title: "Portfolio Website with Automated CI/CD Deployment",
     description:
-      "Full-featured e-commerce platform with user authentication and payment processing.",
+      "A personal portfolio website showcasing my projects and skills, with automated CI/CD deployment using GitHub Actions.",
     image: "/projects/project3.png",
-    tags: ["React", "Node.js", "Stripe"],
-    demoUrl: "#",
-    githubUrl: "#",
+    tags: ["React ", "AWS S3", "Amazon CloudFront", "AWS IAM", "TailwindCSS"],
+    demoUrl: "https://d24jyxr27mmrxd.cloudfront.net/",
+    githubUrl: "https://github.com/varun1976/Portfolio",
   },
 ];
 
