@@ -15,35 +15,66 @@ export const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    emailjs
-      .sendForm(
-        'service_xkzp94u',
-        'template_r5f36w9',
-        e.target,
-        '78VmBe9N9pWL5ewIF'
-      )
-      .then(
-        (result) => {
-          toast({
-            title: "Message sent!",
-            description: "Thank you for your message. I'll get back to you soon.",
-          });
-          setIsSubmitting(false);
-          e.target.reset();
+  try {
+    // ------------------- EMAILJS SEND -------------------
+    await emailjs.sendForm(
+      "service_xkzp94u",
+      "template_r5f36w9",
+      e.target,
+      "78VmBe9N9pWL5ewIF"
+    );
+
+    toast({
+      title: "Message sent!",
+      description: "Thank you for your message. I'll get back to you soon.",
+    });
+
+    // ------------------- STORE IN DYNAMODB VIA API -------------------
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      message: e.target.message.value,
+    };
+
+    const response = await fetch(
+      "https://8gk8kzmri5.execute-api.ap-south-1.amazonaws.com/prod/contact",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        (error) => {
-          toast({
-            title: "Failed to send",
-            description: "Something went wrong. Please try again later.",
-          });
-          setIsSubmitting(false);
-        }
-      );
-  };
+        body: JSON.stringify(formData),
+      }
+    );
+
+    if (response.ok) {
+      toast({
+        title: "Message stored!",
+        description: "Your message has been saved successfully.",
+      });
+      e.target.reset();
+    } else {
+      const errorText = await response.text();
+      toast({
+        title: "Failed to store",
+        description: `Server error: ${errorText}`,
+      });
+    }
+  } catch (error) {
+    console.log("Error:", error);
+    toast({
+      title: "Error",
+      description: "Something went wrong. Please try again later.",
+    });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
