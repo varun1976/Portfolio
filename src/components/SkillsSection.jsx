@@ -37,9 +37,12 @@ const skills = [
   { name: "Google Colab", level: 95, category: "Machine Learning" },
   { name: "Jupyter Notebook", level: 95, category: "Machine Learning" },
 
+  //cloud
+  { name: "AWS", level: 70, category: "cloud" },
+
 ];
 
-const categories = ["all", "frontend", "backend", "tools", "Programming Skills", "Machine Learning"];
+const categories = ["all", "frontend", "backend", "tools", "Programming Skills", "Machine Learning", "cloud"];
 
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
