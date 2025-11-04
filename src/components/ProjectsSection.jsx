@@ -26,7 +26,7 @@ const projects = [
     description:
       "A personal portfolio website showcasing my projects and skills, with automated CI/CD deployment using GitHub Actions.",
     image: "/projects/project3.png",
-    tags: ["React ", "AWS S3", "Amazon CloudFront", "AWS IAM", "TailwindCSS"],
+    tags: ["React ", "AWS S3", "Amazon CloudFront", "AWS IAM", "TailwindCSS","AWS DynamoDB"],
     demoUrl: "https://d24jyxr27mmrxd.cloudfront.net/",
     githubUrl: "https://github.com/varun1976/Portfolio",
   },
