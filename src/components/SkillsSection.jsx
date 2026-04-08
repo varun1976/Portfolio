@@ -27,7 +27,7 @@ const skills = [
   { name: "C/C++", level: 70, category: "Programming Skills" },
   { name: "Object Oriented Programming", level: 90, category: "Programming Skills" },
   { name: "Data Structures & Algorithms", level: 90, category: "Programming Skills" },
-  { name: "High Leve Design", level: 70, category: "Programming Skills" },
+  { name: "High Level Design", level: 70, category: "Programming Skills" },
 
   // Machine Learning
   { name: "python for ML", level: 80, category: "Machine Learning" },
